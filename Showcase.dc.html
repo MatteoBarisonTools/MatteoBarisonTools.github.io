@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+  <link rel="stylesheet" href="./ds-styles.css">
+  <script src="./image-slot.js"></script>
+  <title>Showcase - Matteo Barison</title>
+  <style>
+    a { color: var(--color-accent); }
+    a:hover { color: var(--color-accent-700); }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+    .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-5); }
+    .sc-card { cursor: pointer; }
+    .sc-card h3 { font-weight: 400; margin: var(--space-2) 0 0; font-size: 16px; }
+    img, image-slot img { -webkit-user-drag: none; user-drag: none; user-select: none; }
+  </style>
+</helmet>
+
+<div style="background:var(--color-bg);min-height:100vh">
+
+  <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ false }}">
+    <div slot-true style="display:none"></div>
+  </sc-if>
+
+  <sc-if value="{{ !unlocked }}" hint-placeholder-val="{{ true }}">
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:var(--space-6)">
+      <form onsubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:var(--space-3);max-width:360px;width:100%">
+        <p class="tag tag-outline" style="align-self:flex-start">Private</p>
+        <h2 style="font-weight:400;margin:0">This section is password-protected</h2>
+        <div class="field">
+          <label for="pw">Password</label>
+          <input class="input" id="pw" type="password" value="{{ pwValue }}" onChange="{{ onPwChange }}" placeholder="Enter password">
+        </div>
+        <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+          <p style="color:var(--color-accent-700);font-size:13px;margin:0">Incorrect password.</p>
+        </sc-if>
+        <button type="submit" class="btn btn-primary btn-block">Unlock</button>
+      </form>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <header class="nav" style="padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px)">
+        <div style="display:flex;align-items:center;gap:var(--space-4);margin-right:auto">
+          <a href="./Home.dc.html" class="nav-brand" style="text-decoration:none;margin-right:0">Matteo Barison</a>
+          <div style="display:flex;gap:var(--space-3);align-items:center">
+            <a href="https://linkedin.com/in/matteobarison99" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+            <a href="https://matteobarison.artstation.com" target="_blank" rel="noopener" aria-label="ArtStation" style="display:flex"><img src="https://cdn.simpleicons.org/artstation/eef4f2" alt="ArtStation" width="18" height="18"></a>
+            <a href="mailto:matteobarizz@gmail.com" aria-label="Email" style="display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a>
+          </div>
+        </div>
+        <a href="./Home.dc.html">Home</a>
+        <a href="./Projects.dc.html">Projects</a>
+        <a href="./Contact.dc.html">Contact</a>
+      </header>
+
+      <section class="container" style="padding-top:var(--space-8);padding-bottom:var(--space-4)">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;max-width:640px;margin:0 auto var(--space-4)">
+          <figure class="plate" style="margin:0 0 var(--space-4);border-radius:50%;overflow:hidden;width:180px;height:180px">
+            <image-slot id="sc-portrait" shape="circle" fit="cover" src="uploads/IMG_2820.png" placeholder="Portrait photo" style="width:180px;height:180px;object-position:center 15%"></image-slot>
+          </figure>
+          <p class="tag tag-outline" style="margin-bottom:var(--space-3)">Private showcase</p>
+          <h1 style="font-weight:400;margin-bottom:var(--space-2)">Matteo Barison</h1>
+          <a href="mailto:matteobarizz@gmail.com">matteobarizz@gmail.com</a>
+        </div>
+        <h2 style="font-weight:400;margin-top:var(--space-6)">3D &amp; Concept Art</h2>
+      </section>
+
+      <hr class="hr">
+
+      <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+        <h2 style="font-weight:400;margin-bottom:var(--space-6)">3D Projects</h2>
+
+        <div class="sc-grid">
+
+          <div class="sc-card" onClick="{{ toggleGothic }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-3d-gothic-1" shape="rect" fit="cover" src="uploads/MATTEO_BARISON_3D3Final_2023_post.png" placeholder="American Gothic" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>American Gothic meets Looney Toons</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleRobot }}">
+            <div class="plate" style="margin:0;position:relative;aspect-ratio:4/3;background:var(--color-neutral-100);overflow:hidden">
+              <video muted style="width:100%;height:100%;object-fit:cover;display:block">
+                <source src="uploads/1DAE08E_Barison_Matteo_Exam.mp4" type="video/mp4">
+              </video>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.25)">
+                <span class="tag tag-outline" style="background:var(--color-bg)">Play video</span>
+              </div>
+            </div>
+            <h3>Angry Robot Toy</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleCar }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-3d-car-post" shape="rect" fit="cover" src="uploads/post.jpg" placeholder="Vintage Car Model" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>Vintage Car Model</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleJester }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-3d-jester-render1" shape="rect" fit="cover" src="uploads/2DAE07E_BarisonMatteo_Render_01.png" placeholder="Jester King" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>Jester King</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleTree }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-3d-tree-desat" shape="rect" fit="cover" src="uploads/render_color_desat.png" placeholder="Tree House" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>Tree House</h3>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="hr">
+
+      <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+        <h2 style="font-weight:400;margin-bottom:var(--space-6)">Concept Art Projects</h2>
+
+        <h3 style="font-weight:400;margin-bottom:var(--space-4);opacity:0.7;font-size:14px;text-transform:uppercase;letter-spacing:0.06em">Characters</h3>
+        <div class="sc-grid" style="margin-bottom:var(--space-7)">
+
+          <div class="sc-card" onClick="{{ toggleGoblin }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-ca-goblin-7" shape="rect" fit="cover" src="uploads/2425_CHD_Barison_Matteo_Creatures_final_REWORK.jpg" placeholder="Goblin" style="width:100%;aspect-ratio:3/4"></image-slot></figure>
+            <h3>Goblin</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ togglePippi }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-ca-pippi-14" shape="rect" fit="cover" src="uploads/2425_CHD_Barison_Matteo_EXAM_14.jpg" placeholder="Pippi Longstocking" style="width:100%;aspect-ratio:3/4"></image-slot></figure>
+            <h3>Pippi Longstocking x Blue Eye Samurai</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleRustborn }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-ca-rustborn-5" shape="rect" fit="cover" src="uploads/2425_CHD_Barison_Matteo_Rustborn_Final_Front.jpg" placeholder="Rustborn" style="width:100%;aspect-ratio:3/4"></image-slot></figure>
+            <h3>Rustborn</h3>
+          </div>
+
+        </div>
+
+        <h3 style="font-weight:400;margin-bottom:var(--space-4);opacity:0.7;font-size:14px;text-transform:uppercase;letter-spacing:0.06em">Environments &amp; Vehicles</h3>
+        <div class="sc-grid">
+
+          <div class="sc-card" onClick="{{ togglePirate }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-ca-pirate-12" shape="rect" fit="cover" src="uploads/Barison_Matteo_1DAE08_12_MoodPainting.jpg" placeholder="Stranded Pirate" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>Stranded Pirate</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleVillage }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-ca-village-6" shape="rect" fit="cover" src="uploads/Barison_Matteo_1DAE08_06_FinalDesign.jpg" placeholder="Village" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>Village</h3>
+          </div>
+
+          <div class="sc-card" onClick="{{ toggleWw2 }}">
+            <figure class="plate" style="margin:0"><image-slot id="sc-ca-ww2-16" shape="rect" fit="cover" src="uploads/Barison_Matteo_1DAEANI08E_16_FinalDesign_Shading.jpg" placeholder="WW2 Flying Vehicle" style="width:100%;aspect-ratio:4/3"></image-slot></figure>
+            <h3>WW2 Flying Vehicle</h3>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="hr">
+
+      <footer class="container" style="padding:var(--space-8) clamp(20px,5vw,64px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)">
+        <p class="text-muted" style="margin:0;font-size:13px">© 2026 Matteo Barison</p>
+        <a href="./Home.dc.html">Back to portfolio</a>
+      </footer>
+
+      <sc-if value="{{ anyOpen }}" hint-placeholder-val="{{ false }}">
+        <div class="dialog-backdrop" style="position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:var(--space-6)" onClick="{{ closeModal }}">
+          <div class="dialog" style="max-width:1200px;width:100%;max-height:88vh;overflow-y:auto;position:relative" onClick="{{ stopPropagation }}">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-4) var(--space-5);position:sticky;top:0;background:var(--color-bg);border-bottom:1px solid var(--color-divider)">
+              <h2 style="font-weight:400;margin:0">{{ openTitle }}</h2>
+              <button onClick="{{ closeModal }}" class="btn btn-ghost">Close</button>
+            </div>
+            <div style="padding:var(--space-5)">
+
+              <sc-if value="{{ expanded.gothic }}" hint-placeholder-val="{{ false }}">
+                <img src="uploads/MATTEO_BARISON_3D3Final_2023_post.png" style="width:100%;height:auto;display:block">
+              </sc-if>
+
+              <sc-if value="{{ expanded.robot }}" hint-placeholder-val="{{ false }}">
+                <video controls autoPlay style="width:100%;display:block;background:var(--color-neutral-100)">
+                  <source src="uploads/1DAE08E_Barison_Matteo_Exam.mp4" type="video/mp4">
+                </video>
+              </sc-if>
+
+              <sc-if value="{{ expanded.car }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/post.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Clay.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/wire.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.jester }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Render_01.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Clay_01.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Clay_02.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Render_02.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Render_03.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Render_04.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Render_05.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE07E_BarisonMatteo_Wireframe_01.png" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.tree }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/render_color_desat.png" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2DAE08E_BarisonMatteo_Treehouse_Clay_01.png" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.goblin }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_final_REWORK.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_blockout_01.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_blockout_02.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_blockout_03.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_concept_01.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_concept_02.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Creatures_concept_03.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.pippi }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_14.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_01.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_02.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_03.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_04.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_05.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_06.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_07.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_08.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_09.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_10.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_11.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_12.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_13.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_EXAM_15.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.rustborn }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_Final_Front.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_concept_02.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_design_01.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_design_02.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_design_03.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_Final_Front_Back.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/2425_CHD_Barison_Matteo_Rustborn_Final_WIP.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.pirate }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/Barison_Matteo_1DAE08_12_MoodPainting.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_01_Intro.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_02_ConceptsA.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_03_ConceptsB.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_04_ConceptsC.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_05_ConceptsD.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_06_ConceptsE.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_07_ConceptsF.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_08_CompositionsA.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_09_CompositionsB.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_10_CompositionsC.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_11_MoodStudiesA.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_13_ReferenceSheet.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.village }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/Barison_Matteo_1DAE08_06_FinalDesign.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_01_Intro-09f2f23c.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_02_Thumbnails_A.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_03_Thumbnails_B.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_04_Thumbnails_C.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_05_VerticalDesign_A.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAE08_07_FinalDesign_Reference.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ expanded.ww2 }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-4)">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_16_FinalDesign_Shading.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_01_Intro.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_02_Vislib_A.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_03_HorizontalDesign_A.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_04_HorizontalDesign_B.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_05_HorizontalDesign_C.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_06_HorizontalDesign_D.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_07_HorizontalDesign_E.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_08_HorizontalDesign_F.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_09_HorizontalDesign_G.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_10_Vislib_B - .jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_11_VerticalDesign_A.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_12_VerticalDesign_B.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_13_VerticalDesign_C.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_14_FinalDesign_Front.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_15_FinalDesign_Back.jpg" style="width:100%;height:auto;display:block">
+                  <img src="uploads/Barison_Matteo_1DAEANI08E_17_FinalDesign_References.jpg" style="width:100%;height:auto;display:block">
+                </div>
+              </sc-if>
+
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </sc-if>
+
+</div>]]>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    unlocked: false, pwValue: '', showError: false,
+    expanded: {}
+  };
+
+  titles = {
+    gothic: 'American Gothic meets Looney Toons',
+    robot: 'Angry Robot Toy',
+    car: 'Vintage Car Model',
+    jester: 'Jester King',
+    tree: 'Tree House',
+    goblin: 'Goblin',
+    pippi: 'Pippi Longstocking x Blue Eye Samurai',
+    rustborn: 'Rustborn',
+    pirate: 'Stranded Pirate',
+    village: 'Village',
+    ww2: 'WW2 Flying Vehicle'
+  };
+
+  componentDidMount() {
+    if (sessionStorage.getItem('showcase-unlocked') === '1') {
+      this.setState({ unlocked: true });
+    }
+    this._blockContext = (e) => { if (e.target.closest('img, image-slot')) e.preventDefault(); };
+    document.addEventListener('contextmenu', this._blockContext);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('contextmenu', this._blockContext);
+  }
+
+  open(key) {
+    this.setState({ expanded: { [key]: true } });
+  }
+
+  close() {
+    this.setState({ expanded: {} });
+  }
+
+  renderVals() {
+    const openKey = Object.keys(this.state.expanded).find(k => this.state.expanded[k]);
+    return {
+      unlocked: this.state.unlocked,
+      pwValue: this.state.pwValue,
+      showError: this.state.showError,
+      onPwChange: (e) => this.setState({ pwValue: e.target.value, showError: false }),
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (this.state.pwValue === 'LEGO_element_2026') {
+          sessionStorage.setItem('showcase-unlocked', '1');
+          this.setState({ unlocked: true, showError: false });
+        } else {
+          this.setState({ showError: true });
+        }
+      },
+      expanded: this.state.expanded,
+      anyOpen: !!openKey,
+      openTitle: openKey ? this.titles[openKey] : '',
+      closeModal: () => this.close(),
+      stopPropagation: (e) => e.stopPropagation(),
+      toggleGothic: () => this.open('gothic'),
+      toggleRobot: () => this.open('robot'),
+      toggleCar: () => this.open('car'),
+      toggleJester: () => this.open('jester'),
+      toggleTree: () => this.open('tree'),
+      toggleGoblin: () => this.open('goblin'),
+      togglePippi: () => this.open('pippi'),
+      toggleRustborn: () => this.open('rustborn'),
+      togglePirate: () => this.open('pirate'),
+      toggleVillage: () => this.open('village'),
+      toggleWw2: () => this.open('ww2')
+    };
+  }
+}
+</script>
+</body>
+</html>

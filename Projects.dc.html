@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+  <link rel="stylesheet" href="./ds-styles.css">
+  <title>Projects - Matteo Barison</title>
+  <style>
+    a { color: var(--color-accent); }
+    a:hover { color: var(--color-accent-700); }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+  </style>
+</helmet>
+
+<div style="background:var(--color-bg);min-height:100vh">
+
+  <header class="nav" style="padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px)">
+    <div style="display:flex;align-items:center;gap:var(--space-4);margin-right:auto">
+      <a href="./Home.dc.html" class="nav-brand" style="text-decoration:none;margin-right:0">Matteo Barison</a>
+      <div style="display:flex;gap:var(--space-3);align-items:center">
+        <a href="https://linkedin.com/in/matteobarison99" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        <a href="https://matteobarison.artstation.com" target="_blank" rel="noopener" aria-label="ArtStation" style="display:flex"><img src="https://cdn.simpleicons.org/artstation/eef4f2" alt="ArtStation" width="18" height="18"></a>
+        <a href="mailto:matteobarizz@gmail.com" aria-label="Email" style="display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a>
+      </div>
+    </div>
+    <a href="./Home.dc.html">Home</a>
+    <a href="./Projects.dc.html" aria-current="page">Projects</a>
+    <a href="./Contact.dc.html">Contact</a>
+  </header>
+
+  <section class="container" style="padding-top:var(--space-8);padding-bottom:var(--space-4)">
+    <p class="tag tag-outline">Case studies</p>
+    <h1 style="font-weight:400;margin-top:var(--space-3)">Selected work</h1>
+    <p style="max-width:60ch;opacity:0.85">Tools, rigs and pipeline utilities built for Maya, Houdini and Unreal Engine. Full write-ups and reels on <a href="https://matteobarison.artstation.com/" target="_blank" rel="noopener">ArtStation</a>.</p>
+  </section>
+
+  <hr class="hr">
+
+  <article id="curvedeform" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-8);align-items:start">
+      <figure class="plate" style="margin:0"><img src="https://cdnb.artstation.com/p/assets/covers/images/098/031/343/large/matteo-barison-matteo-barison-thumbnail.webp?1775917260" alt="CurveDeform for Maya" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+      <div>
+        <p class="card-kicker">Rigging Tool</p>
+        <h2 style="font-weight:400;margin-bottom:var(--space-3)">CurveDeform for Maya</h2>
+        <p style="opacity:0.85;margin-bottom:var(--space-4)">Fix animation issues by drawing a curve directly on the mesh. Inspired by Pixar's CurveNet research, built to be simple: draw curves on any surface, Bezier tangents for full art direction, snapping to verts, topology-independent and additive on any rig or cache — 100% native Maya, no plugins needed.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+          <span class="tag tag-neutral">Maya</span>
+          <span class="tag tag-neutral">Python</span>
+          <span class="tag tag-neutral">PySide6</span>
+        </div>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+          <a href="https://matteobarison.artstation.com/projects/mAa0g9" target="_blank" rel="noopener" class="btn btn-ghost">View on ArtStation -</a>
+          <a href="https://gimbalgoats.gumroad.com/l/curvedeform" target="_blank" rel="noopener" class="btn btn-secondary">Download on Gumroad</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr class="hr">
+
+  <article id="playblast-reviewer" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-8);align-items:start">
+      <div style="order:2">
+        <p class="card-kicker">Review Pipeline</p>
+        <h2 style="font-weight:400;margin-bottom:var(--space-3)">Playblast Tool - Reviewer</h2>
+        <p style="opacity:0.85;margin-bottom:var(--space-4)">A custom review pipeline for Maya 2025: a plugin captures versioned playblast sequences straight from Maya, and a standalone viewer lets supervisors scrub frames and leave color-coded notes. Runs off a shared folder and a single SQLite database in WAL mode — no server needed.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+          <span class="tag tag-neutral">Maya 2025</span>
+          <span class="tag tag-neutral">Python 3</span>
+          <span class="tag tag-neutral">PySide6</span>
+          <span class="tag tag-neutral">SQLite</span>
+        </div>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+          <a href="https://matteobarison.artstation.com/projects/dLO5L3" target="_blank" rel="noopener" class="btn btn-ghost">View on ArtStation -</a>
+          <a href="https://barizzio.gumroad.com/l/playblastreview" target="_blank" rel="noopener" class="btn btn-secondary">Download on Gumroad</a>
+        </div>
+      </div>
+      <figure class="plate" style="margin:0;order:1"><img src="https://cdna.artstation.com/p/assets/covers/images/100/925/552/large/matteo-barison-matteo-barison-thumb.jpg?1784551875" alt="Playblast Tool - Reviewer" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+    </div>
+  </article>
+
+  <hr class="hr">
+
+  <article id="arthropod-rig" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-8);align-items:start">
+      <figure class="plate" style="margin:0"><img src="https://cdna.artstation.com/p/assets/covers/images/098/609/802/large/matteo-barison-matteo-barison-thumbnail-1.webp?1777538535" alt="Arthropod Procedural Rig" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+      <div>
+        <p class="card-kicker">Procedural Rig</p>
+        <h2 style="font-weight:400;margin-bottom:var(--space-3)">Arthropod Procedural Rig</h2>
+        <p style="opacity:0.85;margin-bottom:var(--space-4)">A procedural arthropod rig built in Houdini, packaged as a Houdini Digital Asset so it also runs in Unreal Engine 5. Customize the head, leg count, shape and size, or swap in custom geometry entirely — the rig builds and animates itself around whatever you feed it.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+          <span class="tag tag-neutral">Houdini</span>
+          <span class="tag tag-neutral">HDA</span>
+          <span class="tag tag-neutral">Unreal Engine 5</span>
+        </div>
+        <a href="https://matteobarison.artstation.com/projects/dyB033" target="_blank" rel="noopener" class="btn btn-ghost">View on ArtStation -</a>
+      </div>
+    </div>
+  </article>
+
+  <hr class="hr">
+
+  <article id="rigging-tools" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-8);align-items:start">
+      <div style="order:2">
+        <p class="card-kicker">Rigging Tool</p>
+        <h2 style="font-weight:400;margin-bottom:var(--space-3)">Rigging Tools for Maya</h2>
+        <p style="opacity:0.85;margin-bottom:var(--space-4)">A control-library toolset that speeds up the rigging process: naming-convention-aware control creation, curve merging, LRA toggling across hierarchies, control shape swapping without breaking constraints, batch control creation with auto parent constraints, and joint-naming fixes. Available on Gumroad.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+          <span class="tag tag-neutral">Maya</span>
+          <span class="tag tag-neutral">Python</span>
+          <span class="tag tag-neutral">MEL</span>
+        </div>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+          <a href="https://matteobarison.artstation.com/projects/3EQAQm" target="_blank" rel="noopener" class="btn btn-ghost">View on ArtStation -</a>
+          <a href="https://barizzio.gumroad.com/l/RiggingToolsMaya" target="_blank" rel="noopener" class="btn btn-secondary">Download on Gumroad</a>
+        </div>
+      </div>
+      <figure class="plate" style="margin:0;order:1"><img src="https://cdnb.artstation.com/p/assets/covers/images/098/276/619/large/matteo-barison-matteo-barison-thumbnail.webp?1776629201" alt="Rigging Tools for Maya" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+    </div>
+  </article>
+
+  <hr class="hr">
+
+  <article id="panda-rig" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-8);align-items:start">
+      <figure class="plate" style="margin:0"><img src="https://cdnb.artstation.com/p/assets/covers/images/098/276/702/large/matteo-barison-matteo-barison-thumbnail.webp?1776629317" alt="Panda rig" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+      <div>
+        <p class="card-kicker">Character Rig</p>
+        <h2 style="font-weight:400;margin-bottom:var(--space-3)">Panda Rig</h2>
+        <p style="opacity:0.85;margin-bottom:var(--space-4)">A full character rig built on a model by Adrijana Bohinc, from a concept by Wen Yubang - action and front control setups tuned for expressive, animator-friendly posing.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+          <span class="tag tag-neutral">Maya</span>
+          <span class="tag tag-neutral">Rigging</span>
+        </div>
+        <a href="https://matteobarison.artstation.com/projects/98QAVQ" target="_blank" rel="noopener" class="btn btn-ghost">View on ArtStation -</a>
+      </div>
+    </div>
+  </article>
+
+  <hr class="hr">
+
+  <footer class="container" style="padding:var(--space-8) clamp(20px,5vw,64px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)">
+    <p class="text-muted" style="margin:0;font-size:13px">© 2026 Matteo Barison</p>
+    <div style="display:flex;gap:var(--space-4)">
+      <a href="./Contact.dc.html">Contact</a>
+      <a href="https://linkedin.com/in/matteobarison99" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/MatteoBarisonTools" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://vimeo.com/1091431119" target="_blank" rel="noopener">Vimeo</a>
+      <a href="https://matteobarison.artstation.com" target="_blank" rel="noopener">ArtStation</a>
+    </div>
+  </footer>
+
+</div>]]>
+</x-dc>
+</body>
+</html>
