@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+  <link rel="stylesheet" href="./ds-styles.css">
+  <script src="./image-slot.js"></script>
+  <title>Matteo Barison - Pipeline Developer</title>
+  <style>
+    a { color: var(--color-accent); }
+    a:hover { color: var(--color-accent-700); }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+  </style>
+</helmet>
+
+<div style="background:var(--color-bg);min-height:100vh">
+
+  <header class="nav" style="padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px)">
+    <div style="display:flex;align-items:center;gap:var(--space-4);margin-right:auto">
+      <a href="./Home.dc.html" class="nav-brand" style="text-decoration:none;margin-right:0">Matteo Barison</a>
+      <div style="display:flex;gap:var(--space-3);align-items:center">
+        <a href="https://linkedin.com/in/matteobarison99" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        <a href="https://matteobarison.artstation.com" target="_blank" rel="noopener" aria-label="ArtStation" style="display:flex"><img src="https://cdn.simpleicons.org/artstation/eef4f2" alt="ArtStation" width="18" height="18"></a>
+        <a href="mailto:matteobarizz@gmail.com" aria-label="Email" style="display:flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a>
+      </div>
+    </div>
+    <a href="./Home.dc.html" aria-current="page">Home</a>
+    <a href="./Projects.dc.html">Projects</a>
+    <a href="./Contact.dc.html">Contact</a>
+  </header>
+
+  <section class="container" style="padding-top:var(--space-8);padding-bottom:var(--space-8)">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;max-width:640px;margin:0 auto">
+      <figure class="plate" style="margin:0 0 var(--space-4);border-radius:50%;overflow:hidden;width:260px;height:260px">
+        <image-slot id="hero-portrait" shape="circle" fit="cover" src="uploads/IMG_2820.png" placeholder="Portrait photo" style="width:260px;height:260px;object-position:center 15%"></image-slot>
+      </figure>
+      <p class="tag tag-outline" style="margin-bottom:var(--space-4)">Pipeline Developer - VFX &amp; Animation</p>
+      <h1 style="font-size:clamp(36px,5vw,56px);font-weight:400;margin-bottom:var(--space-3)">Matteo Barison</h1>
+      <a href="mailto:matteobarizz@gmail.com" style="margin-bottom:var(--space-3);display:inline-block">matteobarizz@gmail.com</a>
+      <p style="font-size:19px;max-width:46ch;opacity:0.85;margin-bottom:var(--space-6)">Software engineer building the tools, automation and infrastructure that let artists ship shots faster.</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center">
+        <a href="./Projects.dc.html" class="btn btn-primary">View projects</a>
+        <a href="./Contact.dc.html" class="btn btn-secondary">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:var(--space-8);align-items:start">
+
+      <div>
+        <h2 style="font-weight:400;margin-bottom:var(--space-6)">Skills</h2>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Languages</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">English</span>
+              <span class="tag tag-neutral">Italian</span>
+              <span class="tag tag-neutral">Spanish</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Programming Languages</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">Python</span>
+              <span class="tag tag-neutral">C#</span>
+              <span class="tag tag-neutral">VB</span>
+              <span class="tag tag-neutral">Java</span>
+              <span class="tag tag-neutral">Kotlin</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">DCC &amp; Tools</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">Maya</span>
+              <span class="tag tag-neutral">Houdini</span>
+              <span class="tag tag-neutral">Substance Painter</span>
+              <span class="tag tag-neutral">ZBrush</span>
+              <span class="tag tag-neutral">Adobe Suite</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Game Engines</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">Unreal Engine 5</span>
+              <span class="tag tag-neutral">Unity</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">API</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">USD</span>
+              <span class="tag tag-neutral">PySide6/Qt</span>
+              <span class="tag tag-neutral">.NET</span>
+              <span class="tag tag-neutral">SQL Server</span>
+              <span class="tag tag-neutral">Crystal Reports</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Production Tracking</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">ShotGrid</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Operating Systems</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">Windows</span>
+              <span class="tag tag-neutral">macOS</span>
+              <span class="tag tag-neutral">Linux</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Development</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">PyCharm</span>
+              <span class="tag tag-neutral">Visual Studio</span>
+              <span class="tag tag-neutral">PEP8</span>
+              <span class="tag tag-neutral">Android Studio</span>
+              <span class="tag tag-neutral">Git</span>
+            </div>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:var(--space-4);align-items:start">
+            <p class="text-muted" style="margin:0;font-size:13px">Database</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag-neutral">MSSQL</span>
+              <span class="tag tag-neutral">MySQL</span>
+              <span class="tag tag-neutral">SQLite</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 style="font-weight:400;margin-bottom:var(--space-6)">Professional Development</h2>
+        <h6 style="color:var(--color-accent);margin-top:var(--space-2);margin-bottom:var(--space-3)">Work Experience</h6>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-7)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Freelance - 3D Generalist</h3>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Jun 2026 - Present</p>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Gimbal Goats - Rigging TD (Internship)</h3>
+            <p class="text-muted" style="margin:0 0 var(--space-1);font-size:13px">Ghent, Belgium</p>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Feb 2026 - Jun 2026 - 5 months</p>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Gaia Informatica SRL - Software Developer</h3>
+            <p class="text-muted" style="margin:0 0 var(--space-1);font-size:13px">Italy</p>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Sep 2019 - Aug 2022 - 3 years</p>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Silikomart SRL - Software Developer &amp; System Manager</h3>
+            <p class="text-muted" style="margin:0 0 var(--space-1);font-size:13px">Italy</p>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Apr 2019 - Sep 2019 - 5 months</p>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Marco Polo Venice Airport - Service Desk (Internship)</h3>
+            <p class="text-muted" style="margin:0 0 var(--space-1);font-size:13px">Venice, Italy</p>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Jul 2016 - 1 month</p>
+          </div>
+        </div>
+
+        <h6 style="color:var(--color-accent);margin-top:var(--space-8);margin-bottom:var(--space-3)">Studies</h6>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-7)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Howest DAE - B.A. 3D Production &amp; VFX</h3>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Sep 2022 - Jun 2026 - 4 years</p>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">Bigrock - 3D Graphics for Games &amp; Game Development (PC, Mobile, VR, AR)</h3>
+            <p class="text-muted" style="margin:0 0 var(--space-1);font-size:13px">Roncade, Treviso, Italy</p>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Sep 2018 - Feb 2019 - 6 months</p>
+          </div>
+          <hr class="hr" style="margin:var(--space-3) 0 var(--space-1)">
+          <div>
+            <h3 style="font-weight:400;margin-bottom:2px">High School Diploma - Computer Science &amp; Information Technology</h3>
+            <p class="text-muted" style="margin:0;font-size:13px;font-variant-numeric:tabular-nums">Sep 2013 - Jun 2018 - 5 years</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <h6 style="color:var(--color-accent)">Showreel</h6>
+    <h2 style="font-weight:400;margin-bottom:var(--space-4)">Watch on Vimeo</h2>
+    <div class="plate" style="max-width:800px">
+      <div style="position:relative;width:100%;aspect-ratio:16/9">
+        <iframe src="https://player.vimeo.com/video/1091431119" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="autoplay; fullscreen; picture-in-picture" title="Matteo Barison showreel"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)">
+      <div>
+        <h6 style="color:var(--color-accent)">Selected work</h6>
+        <h2 style="font-weight:400">Projects</h2>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-4)">
+      <a href="./Projects.dc.html#curvedeform" style="text-decoration:none;color:inherit">
+        <div class="card">
+          <figure class="plate" style="margin:0"><img src="https://cdnb.artstation.com/p/assets/covers/images/098/031/343/large/matteo-barison-matteo-barison-thumbnail.webp?1775917260" alt="CurveDeform for Maya" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+          <p class="card-kicker">Rigging Tool</p>
+          <h3 class="card-title">CurveDeform for Maya</h3>
+          <p class="card-body">Fix animation issues by drawing a curve directly on the mesh.</p>
+        </div>
+      </a>
+      <a href="./Projects.dc.html#playblast-reviewer" style="text-decoration:none;color:inherit">
+        <div class="card">
+          <figure class="plate" style="margin:0"><img src="https://cdna.artstation.com/p/assets/covers/images/100/925/552/large/matteo-barison-matteo-barison-thumb.jpg?1784551875" alt="Playblast Tool - Reviewer" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+          <p class="card-kicker">Review Pipeline</p>
+          <h3 class="card-title">Playblast Tool - Reviewer</h3>
+          <p class="card-body">Versioned playblast capture and frame-note review, built on Maya, Python and SQLite.</p>
+        </div>
+      </a>
+      <a href="./Projects.dc.html#rigging-tools" style="text-decoration:none;color:inherit">
+        <div class="card">
+          <figure class="plate" style="margin:0"><img src="https://cdna.artstation.com/p/assets/covers/images/098/609/802/large/matteo-barison-matteo-barison-thumbnail-1.webp?1777538535" alt="Arthropod Procedural Rig" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+          <p class="card-kicker">Procedural Rig</p>
+          <h3 class="card-title">Arthropod Procedural Rig</h3>
+          <p class="card-body">A Houdini procedural rig that also runs in Unreal Engine 5 as an HDA.</p>
+        </div>
+      </a>
+      <a href="./Projects.dc.html#arthropod-rig" style="text-decoration:none;color:inherit">
+        <div class="card">
+          <figure class="plate" style="margin:0"><img src="https://cdnb.artstation.com/p/assets/covers/images/098/276/619/large/matteo-barison-matteo-barison-thumbnail.webp?1776629201" alt="Rigging Tools for Maya" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+          <p class="card-kicker">Rigging Tool</p>
+          <h3 class="card-title">Rigging Tools for Maya</h3>
+          <p class="card-body">A control-library toolset that speeds up the rigging process.</p>
+        </div>
+      </a>
+      <a href="./Projects.dc.html#panda-rig" style="text-decoration:none;color:inherit">
+        <div class="card">
+          <figure class="plate" style="margin:0"><img src="https://cdnb.artstation.com/p/assets/covers/images/098/276/702/large/matteo-barison-matteo-barison-thumbnail.webp?1776629317" alt="Panda rig" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:var(--color-neutral-100)"></figure>
+          <p class="card-kicker">Character Rig</p>
+          <h3 class="card-title">Panda Rig</h3>
+          <p class="card-body">A full character rig with expressive, animator-friendly controls.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <footer class="container" style="padding:var(--space-8) clamp(20px,5vw,64px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)">
+    <p class="text-muted" style="margin:0;font-size:13px">© 2026 Matteo Barison</p>
+    <div style="display:flex;gap:var(--space-4)">
+      <a href="./Contact.dc.html">Contact</a>
+      <a href="https://linkedin.com/in/matteobarison99" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/MatteoBarisonTools" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://vimeo.com/1091431119" target="_blank" rel="noopener">Vimeo</a>
+      <a href="https://matteobarison.artstation.com" target="_blank" rel="noopener">ArtStation</a>
+    </div>
+  </footer>
+
+</div>]]>
+</x-dc>
+</body>
+</html>
