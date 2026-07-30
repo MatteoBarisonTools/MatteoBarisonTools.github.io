@@ -343,7 +343,9 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
-    if (sessionStorage.getItem('showcase-unlocked') === '1') {
+    const hash = window.location.hash.slice(1);
+    if (hash === 'LEGO_element_2026' || sessionStorage.getItem('showcase-unlocked') === '1') {
+      sessionStorage.setItem('showcase-unlocked', '1');
       this.setState({ unlocked: true });
     }
     this._blockContext = (e) => { if (e.target.closest('img, image-slot')) e.preventDefault(); };
