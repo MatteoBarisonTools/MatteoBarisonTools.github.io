@@ -14,23 +14,60 @@
     a { color: var(--color-accent); }
     a:hover { color: var(--color-accent-700); }
     .container { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
-    .ph-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: var(--space-3);
-      align-items: start;
-    }
-    .ph-thumb {
-      cursor: pointer;
-      overflow: hidden;
-      background: var(--color-neutral-100);
-    }
-    .ph-thumb img {
-      width: 100%; height: auto; display: block;
-      transition: transform 0.3s ease;
-    }
-    .ph-thumb:hover img { transform: scale(1.04); }
     img { -webkit-user-drag: none; user-drag: none; user-select: none; }
+
+    /* Cover cards */
+    .cover-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+      gap: var(--space-4);
+    }
+    @media (max-width: 540px) {
+      .cover-grid { grid-template-columns: 1fr; }
+    }
+    .cover-card {
+      cursor: pointer; position: relative; overflow: hidden;
+    }
+    .cover-card img {
+      width: 100%; height: auto; display: block;
+      transition: transform 0.4s ease;
+    }
+    .cover-card:hover img { transform: scale(1.03); }
+    .cover-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: var(--space-4) var(--space-4) var(--space-3);
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      display: flex; align-items: baseline; justify-content: space-between;
+    }
+    .cover-label h2 {
+      font-weight: 400; margin: 0; color: #fff; font-size: clamp(22px, 3vw, 32px);
+    }
+    .cover-label span {
+      color: rgba(255,255,255,0.7); font-size: 13px;
+    }
+
+    /* Gallery masonry */
+    .gallery-masonry {
+      columns: 3; column-gap: 6px;
+    }
+    .gallery-masonry img {
+      width: 100%; display: block; margin-bottom: 6px;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) { .gallery-masonry { columns: 2; } }
+    @media (max-width: 500px) { .gallery-masonry { columns: 1; } }
+
+    /* Back button */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      cursor: pointer; background: none; border: none;
+      color: var(--color-accent); font-family: var(--font-heading);
+      font-weight: var(--font-heading-weight); font-size: 14px;
+      padding: 0; margin-bottom: var(--space-4);
+    }
+    .back-btn:hover { color: var(--color-accent-700); }
+
+    /* Lightbox */
     .lb-img {
       max-width: 100%; max-height: 82vh; display: block; margin: 0 auto;
       object-fit: contain;
@@ -46,7 +83,6 @@
     .lb-prev { left: var(--space-3); }
     .lb-next { right: var(--space-3); }
     @media (max-width: 600px) {
-      .ph-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-2); }
       .lb-nav { width: 36px; height: 36px; font-size: 16px; }
       .lb-prev { left: var(--space-2); }
       .lb-next { right: var(--space-2); }
@@ -78,59 +114,35 @@
 
   <hr class="hr">
 
-  <!-- Warm Nature -->
-  <section id="warm-nature" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
-    <h2 style="font-weight:400;margin-bottom:var(--space-4)">Warm Nature</h2>
-    <div class="ph-grid">
-      <sc-for list="{{ warmNature }}" as="photo">
-        <div class="ph-thumb plate" onClick="{{ photo.open }}">
-          <img src="{{ photo.src }}" alt="Warm Nature" loading="lazy">
-        </div>
-      </sc-for>
-    </div>
-  </section>
+  <!-- Overview: cover cards -->
+  <sc-if value="{{ !openGallery }}" hint-placeholder-val="{{ true }}">
+    <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+      <div class="cover-grid">
+        <sc-for list="{{ covers }}" as="c">
+          <div class="cover-card" onClick="{{ c.open }}">
+            <img src="{{ c.src }}" alt="{{ c.title }}">
+            <div class="cover-label">
+              <h2>{{ c.title }}</h2>
+              <span>{{ c.count }} photos</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
 
-  <hr class="hr">
-
-  <!-- Animals -->
-  <section id="animals" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
-    <h2 style="font-weight:400;margin-bottom:var(--space-4)">Animals</h2>
-    <div class="ph-grid">
-      <sc-for list="{{ animals }}" as="photo">
-        <div class="ph-thumb plate" onClick="{{ photo.open }}">
-          <img src="{{ photo.src }}" alt="Animals" loading="lazy">
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <!-- Outdoor -->
-  <section id="outdoor" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
-    <h2 style="font-weight:400;margin-bottom:var(--space-4)">Outdoor</h2>
-    <div class="ph-grid">
-      <sc-for list="{{ outdoor }}" as="photo">
-        <div class="ph-thumb plate" onClick="{{ photo.open }}">
-          <img src="{{ photo.src }}" alt="Outdoor" loading="lazy">
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <!-- Studio -->
-  <section id="studio" class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
-    <h2 style="font-weight:400;margin-bottom:var(--space-4)">Studio</h2>
-    <div class="ph-grid">
-      <sc-for list="{{ studio }}" as="photo">
-        <div class="ph-thumb plate" onClick="{{ photo.open }}">
-          <img src="{{ photo.src }}" alt="Studio" loading="lazy">
-        </div>
-      </sc-for>
-    </div>
-  </section>
+  <!-- Expanded gallery -->
+  <sc-if value="{{ openGallery }}" hint-placeholder-val="{{ false }}">
+    <section class="container" style="padding:var(--space-8) clamp(20px,5vw,64px)">
+      <button class="back-btn" onClick="{{ closeGallery }}">&#8249; Back to galleries</button>
+      <h2 style="font-weight:400;margin-bottom:var(--space-6)">{{ openTitle }}</h2>
+      <div class="gallery-masonry">
+        <sc-for list="{{ galleryPhotos }}" as="photo">
+          <img src="{{ photo.src }}" alt="{{ openTitle }}" loading="lazy" onClick="{{ photo.open }}">
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
 
   <hr class="hr">
 
@@ -161,67 +173,87 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  galleries = {
-    warmNature: [
-      'Photography_media/Warm Nature/IMG_1759.jpg',
-      'Photography_media/Warm Nature/IMG_2195.jpg',
-      'Photography_media/Warm Nature/IMG_2248.jpg',
-      'Photography_media/Warm Nature/IMG_2408.jpg',
-      'Photography_media/Warm Nature/IMG_2429.jpg',
-      'Photography_media/Warm Nature/IMG_2519.jpg',
-      'Photography_media/Warm Nature/IMG_2682.jpg',
-      'Photography_media/Warm Nature/IMG_2689.jpg',
-      'Photography_media/Warm Nature/IMG_2736.jpg',
-      'Photography_media/Warm Nature/IMG_2739.jpg',
-      'Photography_media/Warm Nature/IMG_2921.jpg',
-      'Photography_media/Warm Nature/IMG_2932.jpg',
-      'Photography_media/Warm Nature/IMG_3288.jpg',
-      'Photography_media/Warm Nature/IMG_3292.jpg',
-      'Photography_media/Warm Nature/IMG_3297.jpg',
-      'Photography_media/Warm Nature/IMG_3324.jpg',
-      'Photography_media/Warm Nature/IMG_3900.jpg'
-    ],
-    animals: [
-      'Photography_media/Animals/DSC_0445.jpg',
-      'Photography_media/Animals/DSC_0456.jpg',
-      'Photography_media/Animals/IMG_2217.jpg',
-      'Photography_media/Animals/IMG_2264.jpg',
-      'Photography_media/Animals/IMG_2364-Enhanced-NR.jpg',
-      'Photography_media/Animals/IMG_4313.jpg',
-      'Photography_media/Animals/IMG_4358.jpg',
-      'Photography_media/Animals/IMG_4392.jpg',
-      'Photography_media/Animals/IMG_4632.jpg',
-      'Photography_media/Animals/Still 2026-05-10 133233_1.3.1.jpg',
-      'Photography_media/Animals/Still 2026-05-10 133233_1.3.5.jpg',
-      'Photography_media/Animals/fsfsfs.jpg'
-    ],
-    outdoor: [
-      'Photography_media/Outdoor/BarisonMatteo_Composition_01_edit.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Composition_02_edit.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Composition_03_edit.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Exposure_01_edit.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Exposure_03_edit.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Extra_01.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Extra_08.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Extra_09.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Extra_11.jpg',
-      'Photography_media/Outdoor/BarisonMatteo_Extra_14.jpg',
-      'Photography_media/Outdoor/IMG_4161.jpg',
-      'Photography_media/Outdoor/IMG_4501.jpg'
-    ],
-    studio: [
-      'Photography_media/Studio/Studio_00.jpg',
-      'Photography_media/Studio/Studio_01.jpg',
-      'Photography_media/Studio/Studio_02.jpg',
-      'Photography_media/Studio/Studio_03.jpg',
-      'Photography_media/Studio/Studio_04.jpg',
-      'Photography_media/Studio/Studio_05.jpg'
-    ]
-  };
+  galleryData = [
+    {
+      key: 'warmNature',
+      title: 'Warm Nature',
+      cover: 'Photography_media/Warm Nature/IMG_2248.jpg',
+      photos: [
+        'Photography_media/Warm Nature/IMG_1759.jpg',
+        'Photography_media/Warm Nature/IMG_2195.jpg',
+        'Photography_media/Warm Nature/IMG_2248.jpg',
+        'Photography_media/Warm Nature/IMG_2408.jpg',
+        'Photography_media/Warm Nature/IMG_2429.jpg',
+        'Photography_media/Warm Nature/IMG_2519.jpg',
+        'Photography_media/Warm Nature/IMG_2682.jpg',
+        'Photography_media/Warm Nature/IMG_2689.jpg',
+        'Photography_media/Warm Nature/IMG_2736.jpg',
+        'Photography_media/Warm Nature/IMG_2739.jpg',
+        'Photography_media/Warm Nature/IMG_2921.jpg',
+        'Photography_media/Warm Nature/IMG_2932.jpg',
+        'Photography_media/Warm Nature/IMG_3288.jpg',
+        'Photography_media/Warm Nature/IMG_3292.jpg',
+        'Photography_media/Warm Nature/IMG_3297.jpg',
+        'Photography_media/Warm Nature/IMG_3324.jpg',
+        'Photography_media/Warm Nature/IMG_3900.jpg'
+      ]
+    },
+    {
+      key: 'animals',
+      title: 'Animals',
+      cover: 'Photography_media/Animals/Still 2026-05-10 133233_1.3.1.jpg',
+      photos: [
+        'Photography_media/Animals/DSC_0445.jpg',
+        'Photography_media/Animals/DSC_0456.jpg',
+        'Photography_media/Animals/IMG_2217.jpg',
+        'Photography_media/Animals/IMG_2264.jpg',
+        'Photography_media/Animals/IMG_2364-Enhanced-NR.jpg',
+        'Photography_media/Animals/IMG_4313.jpg',
+        'Photography_media/Animals/IMG_4358.jpg',
+        'Photography_media/Animals/IMG_4392.jpg',
+        'Photography_media/Animals/IMG_4632.jpg',
+        'Photography_media/Animals/Still 2026-05-10 133233_1.3.1.jpg',
+        'Photography_media/Animals/Still 2026-05-10 133233_1.3.5.jpg',
+        'Photography_media/Animals/fsfsfs.jpg'
+      ]
+    },
+    {
+      key: 'outdoor',
+      title: 'Outdoor',
+      cover: 'Photography_media/Outdoor/BarisonMatteo_Extra_01.jpg',
+      photos: [
+        'Photography_media/Outdoor/BarisonMatteo_Composition_01_edit.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Composition_02_edit.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Composition_03_edit.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Exposure_01_edit.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Exposure_03_edit.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Extra_01.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Extra_08.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Extra_09.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Extra_11.jpg',
+        'Photography_media/Outdoor/BarisonMatteo_Extra_14.jpg',
+        'Photography_media/Outdoor/IMG_4161.jpg',
+        'Photography_media/Outdoor/IMG_4501.jpg'
+      ]
+    },
+    {
+      key: 'studio',
+      title: 'Studio',
+      cover: 'Photography_media/Studio/Studio_00.jpg',
+      photos: [
+        'Photography_media/Studio/Studio_00.jpg',
+        'Photography_media/Studio/Studio_01.jpg',
+        'Photography_media/Studio/Studio_02.jpg',
+        'Photography_media/Studio/Studio_03.jpg',
+        'Photography_media/Studio/Studio_04.jpg',
+        'Photography_media/Studio/Studio_05.jpg'
+      ]
+    }
+  ];
 
   state = {
+    openGallery: null,
     lightboxOpen: false,
-    lightboxGallery: null,
     lightboxIndex: 0
   };
 
@@ -242,34 +274,49 @@ class Component extends DCLogic {
     document.removeEventListener('contextmenu', this._blockContext);
   }
 
+  _getOpen() {
+    return this.galleryData.find(g => g.key === this.state.openGallery);
+  }
+
   _navigate(dir) {
-    const gallery = this.galleries[this.state.lightboxGallery];
-    if (!gallery) return;
+    const gal = this._getOpen();
+    if (!gal) return;
     let idx = this.state.lightboxIndex + dir;
-    if (idx < 0) idx = gallery.length - 1;
-    if (idx >= gallery.length) idx = 0;
+    if (idx < 0) idx = gal.photos.length - 1;
+    if (idx >= gal.photos.length) idx = 0;
     this.setState({ lightboxIndex: idx });
   }
 
-  _makeItems(galleryKey) {
-    return this.galleries[galleryKey].map((src, i) => ({
-      src,
-      open: () => this.setState({ lightboxOpen: true, lightboxGallery: galleryKey, lightboxIndex: i })
-    }));
-  }
-
   renderVals() {
-    const gal = this.state.lightboxGallery;
-    const idx = this.state.lightboxIndex;
-    const currentSrc = gal && this.galleries[gal] ? this.galleries[gal][idx] || '' : '';
+    const openGal = this._getOpen();
+
+    const covers = this.galleryData.map(g => ({
+      src: g.cover,
+      title: g.title,
+      count: g.photos.length,
+      open: () => {
+        this.setState({ openGallery: g.key });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }));
+
+    const galleryPhotos = openGal ? openGal.photos.map((src, i) => ({
+      src,
+      open: () => this.setState({ lightboxOpen: true, lightboxIndex: i })
+    })) : [];
+
+    const lightboxSrc = openGal && this.state.lightboxOpen
+      ? openGal.photos[this.state.lightboxIndex] || ''
+      : '';
 
     return {
-      warmNature: this._makeItems('warmNature'),
-      animals: this._makeItems('animals'),
-      outdoor: this._makeItems('outdoor'),
-      studio: this._makeItems('studio'),
+      covers,
+      openGallery: this.state.openGallery,
+      openTitle: openGal ? openGal.title : '',
+      galleryPhotos,
+      closeGallery: () => this.setState({ openGallery: null }),
       lightboxOpen: this.state.lightboxOpen,
-      lightboxSrc: currentSrc,
+      lightboxSrc,
       closeLightbox: () => this.setState({ lightboxOpen: false }),
       stopPropagation: (e) => e.stopPropagation(),
       prevPhoto: () => this._navigate(-1),
