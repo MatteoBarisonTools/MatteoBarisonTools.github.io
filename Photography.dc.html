@@ -31,9 +31,8 @@
     }
     .cover-card img {
       width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease; will-change: transform;
     }
-    .cover-card:hover img { transform: scale(1.03); }
     .cover-label {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: var(--space-4) var(--space-4) var(--space-3);
@@ -252,11 +251,34 @@ class Component extends DCLogic {
     document.addEventListener('keydown', this._onKey);
     this._blockContext = (e) => { if (e.target.closest('img')) e.preventDefault(); };
     document.addEventListener('contextmenu', this._blockContext);
+
+    // Parallax on cover cards — event delegation so it works after render
+    this._onCoverMove = (e) => {
+      const card = e.target.closest('.cover-card');
+      if (!card) return;
+      const img = card.querySelector('img');
+      if (!img) return;
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      img.style.transition = 'transform 0.15s ease-out';
+      img.style.transform = 'scale(1.08) translate(' + (x * -20) + 'px,' + (y * -20) + 'px)';
+    };
+    this._onCoverOut = (e) => {
+      const card = e.target.closest('.cover-card');
+      if (!card || card.contains(e.relatedTarget)) return;
+      const img = card.querySelector('img');
+      if (img) { img.style.transition = 'transform 0.4s ease'; img.style.transform = ''; }
+    };
+    document.addEventListener('mousemove', this._onCoverMove);
+    document.addEventListener('mouseout', this._onCoverOut);
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this._onKey);
     document.removeEventListener('contextmenu', this._blockContext);
+    document.removeEventListener('mousemove', this._onCoverMove);
+    document.removeEventListener('mouseout', this._onCoverOut);
   }
 
   _getOpen() {
