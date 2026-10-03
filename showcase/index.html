@@ -10,7 +10,7 @@
 <![CDATA[<helmet>
   <link rel="stylesheet" href="../ds-styles.css">
   <script src="../image-slot.js"></script>
-  <title>Showcase - Matteo Barison</title>
+  <title>Digital Art Section - Matteo Barison</title>
   <style>
     a { color: var(--color-accent); }
     a:hover { color: var(--color-accent-700); }
@@ -67,7 +67,7 @@
           <figure class="plate" style="margin:0 0 var(--space-4);border-radius:50%;overflow:hidden;width:180px;height:180px">
             <image-slot id="sc-portrait" shape="circle" fit="cover" src="../uploads/profile_pic.png" placeholder="Portrait photo" style="width:180px;height:180px;object-position:center 15%"></image-slot>
           </figure>
-          <p class="tag tag-outline" style="margin-bottom:var(--space-3)">Private showcase</p>
+          <p class="tag tag-outline" style="margin-bottom:var(--space-3)">Digital Art Section</p>
           <h1 style="font-weight:400;margin-bottom:var(--space-2)">Matteo Barison</h1>
           <a href="mailto:matteobarizz@gmail.com">matteobarizz@gmail.com</a>
         </div>
@@ -345,7 +345,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const hash = window.location.hash.slice(1);
-    if (hash === 'LEGO_element_2026' || sessionStorage.getItem('showcase-unlocked') === '1') {
+    if (hash === '3D_4r7_$h0wc4$3' || sessionStorage.getItem('showcase-unlocked') === '1') {
       sessionStorage.setItem('showcase-unlocked', '1');
       this.setState({ unlocked: true });
     }
@@ -374,7 +374,7 @@ class Component extends DCLogic {
       onPwChange: (e) => this.setState({ pwValue: e.target.value, showError: false }),
       onSubmit: (e) => {
         e.preventDefault();
-        if (this.state.pwValue === 'LEGO_element_2026') {
+        if (this.state.pwValue === '3D_4r7_$h0wc4$3') {
           sessionStorage.setItem('showcase-unlocked', '1');
           this.setState({ unlocked: true, showError: false });
         } else {
